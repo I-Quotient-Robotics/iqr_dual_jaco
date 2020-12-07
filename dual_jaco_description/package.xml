@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>dual_jaco_description</name>
+  <version>0.0.0</version>
+  <description>The dual_jaco_description package</description>
+
+  <maintainer email="support@iquotient-robotics.com">iqr</maintainer>
+
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>kinova_description</build_depend>
+  <build_depend>pan_tilt_description</build_depend>
+  <build_depend>urdf</build_depend>
+  <build_depend>xacro</build_depend>
+  <build_export_depend>kinova_description</build_export_depend>
+  <build_export_depend>pan_tilt_description</build_export_depend>
+  <build_export_depend>urdf</build_export_depend>
+  <build_export_depend>xacro</build_export_depend>
+  <exec_depend>kinova_description</exec_depend>
+  <exec_depend>pan_tilt_description</exec_depend>
+  <exec_depend>urdf</exec_depend>
+  <exec_depend>xacro</exec_depend>
+
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

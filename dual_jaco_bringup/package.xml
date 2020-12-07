@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>dual_jaco_bringup</name>
+  <version>0.0.0</version>
+  <description>The dual_jaco_bringup package</description>
+
+  <maintainer email="support@iquotient-robotics.com">iqr</maintainer>
+
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>dual_jaco_description</build_depend>
+  <build_depend>kinova_driver</build_depend>
+  <build_export_depend>dual_jaco_description</build_export_depend>
+  <build_export_depend>kinova_driver</build_export_depend>
+  <exec_depend>dual_jaco_description</exec_depend>
+  <exec_depend>kinova_driver</exec_depend>
+
+
+  <!-- The export tag contains other, unspecified, tags -->
+  <export>
+    <!-- Other tools can request additional information be placed here -->
+
+  </export>
+</package>

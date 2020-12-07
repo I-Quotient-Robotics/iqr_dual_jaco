@@ -1,0 +1,39 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<launch>
+  
+  <arg name="model" default="$(find xacro)/xacro --inorder $(find dual_jaco_description)/urdf/dual_jaco_robot.urdf.xacro"/>
+  <param name="robot_description" command="$(arg model)"/>
+
+  <!-- left arm driver -->
+  <node name="left_arm_driver" pkg="kinova_driver" type="kinova_arm_driver" output="screen" cwd="node" args="j2n6s200">
+    <rosparam file="$(find dual_jaco_bringup)/config/robot_parameters.yaml" command="load"/>
+    <!-- <param name="serial_number" value="PJ0090000616222-0"/> -->
+    <param name="robot_name" value="left_arm"/>
+    <param name="robot_type" value="j2n6s200"/>
+    <remap from="/left_arm_driver/out/joint_state" to="joint_states"/>
+  </node>
+  
+  <!-- right arm driver -->
+  <node name="right_arm_driver" pkg="kinova_driver" type="kinova_arm_driver" output="screen" cwd="node" args="j2n6s200">
+    <rosparam file="$(find dual_jaco_bringup)/config/robot_parameters.yaml" command="load"/>
+    <param name="serial_number" value="PJ00900006514980-0"/>
+    <param name="robot_name" value="right_arm"/>   
+    <param name="robot_type" value="j2n6s200"/>
+    <remap from="/right_arm_driver/out/joint_state" to="/joint_states"/>
+  </node>
+
+  <!-- pan tilt driver -->
+  <include file="$(find pan_tilt_bringup)/launch/bringup.launch">
+    <arg name="port_name" value="/dev/pan_tilt"/>
+  </include>
+
+  <!-- kinect -->
+  <include file="$(find kinect2_bridge)/launch/kinect2_bridge.launch">
+    <arg name="reg_method" value="cpu"/>
+    <arg name="publish_tf" value="true"/>
+  </include>
+
+  <!-- robot state publisher -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+</launch>

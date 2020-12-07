@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="dual_jaco_robot">
+
+  <xacro:property name="package_name" value="dual_jaco_description"/>
+
+  <!-- Include accessories -->
+  <xacro:include filename="$(find ${package_name})/urdf/iqr_dual_jaco.xacro"/>
+
+  <!-- platfrom -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://${package_name}/urdf/mesh/platfrom.stl"/>
+      </geometry>
+      <material name="">
+        <color rgba="1.0 1.0 1.0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <!-- iqr dual jaco -->
+  <xacro:iqr_dual_jaco package="${package_name}" parent="base_link">
+    <origin xyz="0 0 0.428" rpy="0 0 0"/>
+  </xacro:iqr_dual_jaco>
+
+</robot>
