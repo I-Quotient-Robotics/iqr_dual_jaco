@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: dual_jaco_description
+    relative_path: urdf/dual_jaco_robot.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/dual_jaco_robot.srdf
+  CONFIG:
+    author_name: hangliu
+    author_email: hang.liu@iquotient-robotics.com
+    generated_timestamp: 1607654800
