@@ -4,7 +4,7 @@
   <arg name="debug" default="false" />
   <arg unless="$(arg debug)" name="launch_prefix" value="" />
   <arg     if="$(arg debug)" name="launch_prefix"
-     value="gdb -x $(find dual_jaco_moveit_config)/launch/gdb_settings.gdb --ex run --args" />
+	   value="gdb -x $(find dual_jaco_moveit_config)/launch/gdb_settings.gdb --ex run --args" />
 
   <!-- Verbose Mode Option -->
   <arg name="info" default="$(arg debug)" />
@@ -19,23 +19,15 @@
   <arg name="jiggle_fraction" default="0.05" />
   <arg name="publish_monitored_planning_scene" default="true"/>
 
-  <!-- <arg name="capabilities" default=""/> -->
+  <arg name="capabilities" default=""/>
   <arg name="disable_capabilities" default=""/>
-  
   <!-- load these non-default MoveGroup capabilities (space seperated) -->
+  <!--
   <arg name="capabilities" value="
-              move_group/MoveGroupCartesianPathService
-              move_group/MoveGroupExecuteTrajectoryAction
-              move_group/MoveGroupKinematicsService
-              move_group/MoveGroupMoveAction
-              move_group/MoveGroupPickPlaceAction
-              move_group/MoveGroupPlanService
-              move_group/MoveGroupQueryPlannersService
-              move_group/MoveGroupStateValidationService
-              move_group/MoveGroupGetPlanningSceneService
-              move_group/ApplyPlanningSceneService
-              move_group/ClearOctomapService
+                a_package/AwsomeMotionPlanningCapability
+                another_package/GraspPlanningPipeline
                 " />
+  -->
 
   <!-- inhibit these default MoveGroup capabilities (space seperated) -->
   <!--

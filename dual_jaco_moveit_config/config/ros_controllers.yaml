@@ -61,16 +61,33 @@ controller_list:
       - right_arm_joint_5
       - right_arm_joint_6
   - name: gripper_left_controller
-    action_ns: gripper_command
+    action_ns: follow_joint_trajectory
     default: True
-    type: GripperCommand
+    type: FollowJointTrajectory
     joints:
       - left_arm_joint_finger_1
       - left_arm_joint_finger_2
   - name: gripper_right_controller
-    action_ns: gripper_command
+    action_ns: follow_joint_trajectory
     default: True
-    type: GripperCommand
+    type: FollowJointTrajectory
     joints:
       - left_arm_joint_finger_1
       - left_arm_joint_finger_2
+  - name: robot_group_controller
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
+    joints:
+      - left_arm_joint_1
+      - left_arm_joint_2
+      - left_arm_joint_3
+      - left_arm_joint_4
+      - left_arm_joint_5
+      - left_arm_joint_6
+      - right_arm_joint_1
+      - right_arm_joint_2
+      - right_arm_joint_3
+      - right_arm_joint_4
+      - right_arm_joint_5
+      - right_arm_joint_6

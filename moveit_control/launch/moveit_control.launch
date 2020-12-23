@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="log_type" default="screen"/>
+
+  <rosparam file="$(find moveit_control)/config/config.yaml" command="load" />
+  <node pkg="moveit_control" type="arm_moveit" name="moveit_control" output="$(arg log_type)" />
+</launch>
