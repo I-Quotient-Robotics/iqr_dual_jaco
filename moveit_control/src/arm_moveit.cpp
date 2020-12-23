@@ -1,6 +1,16 @@
 #include <ros/ros.h>
 #include <string>
 #include <thread>
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+#include <geometry_msgs/PoseStamped.h>
+#include <kinova_msgs/ArmPoseAction.h>
+
+#include <actionlib/client/simple_action_client.h>
+=======
+=======
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
 #include <std_msgs/Float64.h>
 #include <sensor_msgs/JointState.h>
 
@@ -17,6 +27,10 @@
 #include <tf2_ros/transform_broadcaster.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 
+<<<<<<< HEAD
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
+=======
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
 #include <moveit/move_group_interface/move_group_interface.h>
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
 
@@ -51,14 +65,34 @@ public:
     kinova_msgs::ArmPoseGoal eff_pose;
     // 末端沿ｚ轴方向前移3cm
     eff_pose.pose.header.frame_id = "right_arm_end_effector";
+<<<<<<< HEAD
+<<<<<<< HEAD
+    eff_pose.pose.pose.position.z = 0.0;
+    eff_pose.pose.pose.position.z = 0.0;
+    eff_pose.pose.pose.position.z = 0.03;
+=======
     eff_pose.pose.pose.position.z = 0.05;
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
+=======
+    eff_pose.pose.pose.position.z = 0.05;
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
     eff_pose.pose.pose.orientation.w = 1.0;
     pc_right_.sendGoal(eff_pose);
     pc_right_.waitForResult(ros::Duration(0.0));
     ros::WallDuration(1.0).sleep();
     // 末端沿ｚ轴方向后移５cm
     eff_pose.pose.header.frame_id = "right_arm_end_effector";
+<<<<<<< HEAD
+<<<<<<< HEAD
+    eff_pose.pose.pose.position.z = 0.0;
+    eff_pose.pose.pose.position.z = 0.0;
+    eff_pose.pose.pose.position.z = -0.03;
+=======
     eff_pose.pose.pose.position.z = -0.05;
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
+=======
+    eff_pose.pose.pose.position.z = -0.05;
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
     eff_pose.pose.pose.orientation.w = 1.0;
     pc_right_.sendGoal(eff_pose);
     pc_right_.waitForResult(ros::Duration(0.0));
@@ -87,10 +121,23 @@ public:
 
     ros::AsyncSpinner spinner(3);
     spinner.start();
+<<<<<<< HEAD
+<<<<<<< HEAD
+  
+    // 从config.yaml参数表中读取预设关节位置
+    std::vector<double> arm_standby_pose_right(12);
+    nh_.getParam("arm_pose/home", arm_standby_pose_right);
+=======
+=======
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
 
     std::vector<double> arm_standby_pose_right(12);
     nh_.getParam("arm_pose/home", arm_standby_pose_right);
 
+<<<<<<< HEAD
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
+=======
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
     std::vector<double> arm_place_pose_right(12);
     nh_.getParam("arm_pose/pick", arm_place_pose_right);
 
@@ -105,13 +152,30 @@ public:
     robot_group.setJointValueTarget(arm_place_pose_right);
     robot_group.move();
     ros::WallDuration(1.0).sleep();
+<<<<<<< HEAD
+<<<<<<< HEAD
+  
+    // 开启新线程，独立完成右臂的位置控制
+=======
 
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
+=======
+
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
     std::thread thread(&PickTaskAction::ExcuteThread, this);
     thread.detach();
 
     kinova_msgs::ArmPoseGoal eff_pose;
     // 末端沿ｚ轴方向前移3cm
     eff_pose.pose.header.frame_id = "left_arm_end_effector";
+<<<<<<< HEAD
+<<<<<<< HEAD
+    eff_pose.pose.pose.position.z = 0.0;
+    eff_pose.pose.pose.position.z = 0.0;
+=======
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
+=======
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
     eff_pose.pose.pose.position.z = 0.03;
     eff_pose.pose.pose.orientation.w = 1.0;
     pc_left_.sendGoal(eff_pose);
@@ -120,6 +184,14 @@ public:
 
     // 末端沿ｚ轴方向后移3cm
     eff_pose.pose.header.frame_id = "left_arm_end_effector";
+<<<<<<< HEAD
+<<<<<<< HEAD
+    eff_pose.pose.pose.position.z = 0.0;
+    eff_pose.pose.pose.position.z = 0.0;
+=======
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
+=======
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
     eff_pose.pose.pose.position.z = -0.03;
     eff_pose.pose.pose.orientation.w = 1.0;
     pc_left_.sendGoal(eff_pose);
@@ -136,7 +208,14 @@ public:
   }
 };
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
+=======
+
+>>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
 int main(int argc, char** argv) {
   ros::init(argc, argv, "arm_control_node");
   ros::NodeHandle nh;
