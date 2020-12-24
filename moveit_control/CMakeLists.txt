@@ -16,18 +16,6 @@ find_package(catkin REQUIRED COMPONENTS
   moveit_ros_planning
   moveit_ros_planning_interface
   moveit_ros_perception
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-  tf2_ros
-  tf2_eigen
-  tf2_geometry_msgs
->>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
-=======
-  tf2_ros
-  tf2_eigen
-  tf2_geometry_msgs
->>>>>>> 911f2aeb0cd91617d739387bacfddc52a12902b6
 )
 find_package(Eigen3 REQUIRED)
 
