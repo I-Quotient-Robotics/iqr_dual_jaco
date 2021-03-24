@@ -229,7 +229,7 @@ gripper_right:
     - SPARS
     - SPARStwo
 robot_group:
-  default_planner_config: None
+  default_planner_config: ""
   planner_configs:
     - SBL
     - EST

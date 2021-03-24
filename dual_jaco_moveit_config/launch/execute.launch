@@ -1,10 +1,4 @@
 <launch>
-  <arg name="rviz" default="true"/>
-
-  <param name="robot_type" value="j2n6s200" />
-
-  <!-- specify the planning pipeline -->
-  <arg name="pipeline" default="ompl" />
 
   <!-- By default, we do not start a database (it can be large) -->
   <arg name="db" default="false" />
@@ -16,6 +10,7 @@
 
   <!--
   By default, hide joint_state_publisher's GUI
+
   MoveIt!'s "demo" mode replaces the real robot driver with the joint_state_publisher.
   The latter one maintains and publishes the current joint configuration of the simulated robot.
   It also provides a GUI to move the simulated robot around "manually".
@@ -25,22 +20,22 @@
 
   <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
   <include file="$(find dual_jaco_moveit_config)/launch/planning_context.launch">
-    <arg name="load_robot_description" value="true"/>
+    <arg name="load_robot_description" value="false"/>
   </include>
 
   <!-- If needed, broadcast static tf for robot root -->
-    <!-- Run joint trajectory action server, which receives planned motion goal under "follow_joint_trajectory", and publish ROS standard trajectory via topic "command". Then for specified robot, the trajectory will be interpreted to their own joint trajectory controller -->
   <node name="left_arm_pid_joint_trajectory_action_server" pkg="kinova_driver" type="joint_trajectory_action_server" output="screen" respawn="false" args="left_arm">
-<!--     <param name="driver_name" value="left_arm_driver" />
-    <param name="controller_name" value="left_arm_controller" /> -->
+    <param name="driver_name" value="left_arm_driver"/>
+    <param name="controller_name" value="left_arm"/>
   </node>
   <node name="left_arm_gripper_command_action_server" pkg="kinova_driver" type="gripper_command_action_server" output="screen" respawn="false" args="left_arm"/>
 
   <node name="right_arm_pid_joint_trajectory_action_server" pkg="kinova_driver" type="joint_trajectory_action_server" output="screen" respawn="false" args="right_arm">
-<!--     <param name="driver_name" value="right_arm_driver" />
-    <param name="controller_name" value="right_arm_controller" /> -->
+    <param name="driver_name" value="right_arm_driver"/>
+    <param name="controller_name" value="right_arm"/>
   </node>
   <node name="right_arm_gripper_command_action_server" pkg="kinova_driver" type="gripper_command_action_server" output="screen" respawn="false" args="right_arm"/>
+
 
   <!-- Run the main MoveIt! executable without trajectory execution (we do not have controllers configured by default) -->
   <include file="$(find dual_jaco_moveit_config)/launch/move_group.launch">
@@ -48,15 +43,13 @@
     <arg name="fake_execution" value="false"/>
     <arg name="info" value="true"/>
     <arg name="debug" value="$(arg debug)"/>
-    <arg name="pipeline" value="$(arg pipeline)"/>
   </include>
 
   <!-- Run Rviz and load the default config to see the state of the move_group node -->
-  <group if="$(arg rviz)"> 
-    <include file="$(find dual_jaco_moveit_config)/launch/moveit_rviz.launch">
-      <arg name="debug" value="$(arg debug)"/>
-    </include>
-  </group>
+  <include file="$(find dual_jaco_moveit_config)/launch/moveit_rviz.launch">
+    <arg name="config" value="true"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
 
   <!-- If database loading was enabled, start mongodb as well -->
   <include file="$(find dual_jaco_moveit_config)/launch/default_warehouse_db.launch" if="$(arg db)">

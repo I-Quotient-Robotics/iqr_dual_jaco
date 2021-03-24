@@ -9,6 +9,8 @@ generic_hw_control_loop:
 # Settings for ros_control hardware interface
 hardware_interface:
   joints:
+    - pan_tilt_yaw_joint
+    - pan_tilt_pitch_joint
     - left_arm_joint_1
     - left_arm_joint_2
     - left_arm_joint_3
@@ -59,33 +61,33 @@ controller_list:
       - right_arm_joint_5
       - right_arm_joint_6
   - name: left_arm_gripper
-    action_ns: gripper_command
-    type: GripperCommand
-    default: true
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
     joints:
       - left_arm_joint_finger_1
       - left_arm_joint_finger_2
   - name: right_arm_gripper
-    action_ns: gripper_command
-    type: GripperCommand
-    default: true
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
     joints:
-      - right_arm_joint_finger_1
-      - right_arm_joint_finger_2
-  # - name: robot_group_controller
-  #   action_ns: follow_joint_trajectory
-  #   default: True
-  #   type: FollowJointTrajectory
-  #   joints:
-  #     - left_arm_joint_1
-  #     - left_arm_joint_2
-  #     - left_arm_joint_3
-  #     - left_arm_joint_4
-  #     - left_arm_joint_5
-  #     - left_arm_joint_6
-  #     - right_arm_joint_1
-  #     - right_arm_joint_2
-  #     - right_arm_joint_3
-  #     - right_arm_joint_4
-  #     - right_arm_joint_5
-  #     - right_arm_joint_6
+      - left_arm_joint_finger_1
+      - left_arm_joint_finger_2
+  - name: dual_jaco_robot
+    action_ns: follow_joint_trajectory
+    default: True
+    type: FollowJointTrajectory
+    joints:
+      - left_arm_joint_1
+      - left_arm_joint_2
+      - left_arm_joint_3
+      - left_arm_joint_4
+      - left_arm_joint_5
+      - left_arm_joint_6
+      - right_arm_joint_1
+      - right_arm_joint_2
+      - right_arm_joint_3
+      - right_arm_joint_4
+      - right_arm_joint_5
+      - right_arm_joint_6

@@ -69,14 +69,14 @@
     </joint>
 
     <!-- pan tilt -->
-    <xacro:pan_tilt parent="head_mount_link" >
+    <!-- <xacro:pan_tilt parent="head_mount_link" >
       <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:pan_tilt>
+    </xacro:pan_tilt> -->
 
     <!-- kinect -->
-    <xacro:kinect_v2 parent="pan_tilt_kinect_surface" >
+    <!-- <xacro:kinect_v2 parent="pan_tilt_kinect_surface" >
       <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:kinect_v2>
+    </xacro:kinect_v2> -->
 
   </xacro:macro>
 
