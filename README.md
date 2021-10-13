@@ -26,7 +26,7 @@ roslaunch dual_jaco_moveit_config execute.launch
 启动机械臂控制
 
 ```
-roslaunch moveit_control moveit_control.cpp
+roslaunch moveit_control moveit_control.launch
 ```
 
 ## 修改机械臂预设位置
