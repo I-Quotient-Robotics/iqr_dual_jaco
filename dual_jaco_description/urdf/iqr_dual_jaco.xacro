@@ -3,9 +3,9 @@
 
   <xacro:macro name="iqr_dual_jaco" params="package parent *origin">
     <!-- Include accessories -->
-    <xacro:include filename="$(find kinova_description)/urdf/j2n6s200.xacro"/>
+    <xacro:include filename="$(find ${package_name})/urdf/kinect_dk.xacro"/>
+    <xacro:include filename="$(find kinova_description)/urdf/j2s6s200.xacro"/>
     <xacro:include filename="$(find pan_tilt_description)/urdf/pan_tilt.urdf.xacro"/>
-    <xacro:include filename="$(find pan_tilt_description)/urdf/kinect_v2.urdf.xacro"/>
 
     <!-- arm support link -->
     <link name="support_link">
@@ -32,7 +32,7 @@
       <parent link="support_link"/>
       <child link="left_mount_link"/>
     </joint>
-    <xacro:j2n6s200 base_parent="left_mount_link" prefix="left_arm"/>
+    <xacro:j2s6s200 base_parent="left_mount_link" prefix="left_arm"/>
 
     <!-- right arm -->
     <link name="right_mount_link"/>
@@ -41,42 +41,25 @@
       <parent link="support_link"/>
       <child link="right_mount_link"/>
     </joint>
-    <xacro:j2n6s200 base_parent="right_mount_link" prefix="right_arm"/> 
+    <xacro:j2s6s200 base_parent="right_mount_link" prefix="right_arm"/> 
 
-    <!-- pan tilt support link -->
-    <link name="head_support_link">
-      <visual>
-        <origin xyz="0 0 0" rpy="0 0 0"/>
-        <geometry>
-          <mesh filename="package://${package}/urdf/mesh/head_support.stl"/>
-        </geometry>
-        <material name="">
-          <color rgba="0.2 0.2 0.2 1"/>
-        </material>
-      </visual>
-    </link>
-    <joint name="head_support_link_joint" type="fixed">
-      <origin xyz="0.0 0.0 0.720" rpy="0.0 0.0 0.0"/>
-      <parent link="support_link"/>
-      <child link="head_support_link"/>
-    </joint>
-
+    <!-- head mount -->
     <link name="head_mount_link"/>
     <joint name="head_mount_link_joint" type="fixed">
-      <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0"/>
-      <parent link="head_support_link"/>
+      <origin xyz="0.0 0.0 0.770" rpy="0.0 0.0 0.0"/>
+      <parent link="support_link"/>
       <child link="head_mount_link"/>
     </joint>
 
     <!-- pan tilt -->
-    <!-- <xacro:pan_tilt parent="head_mount_link" >
-      <origin xyz="0 0 0" rpy="0 0 0" />
+    <!-- <xacro:pan_tilt parent="head_mount_link">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
     </xacro:pan_tilt> -->
 
-    <!-- kinect -->
-    <!-- <xacro:kinect_v2 parent="pan_tilt_kinect_surface" >
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:kinect_v2> -->
+    <!-- kinect dk -->
+    <!-- <xacro:kinect_dk parent="pan_tilt_surface">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:kinect_dk> -->
 
   </xacro:macro>
 

@@ -1,11 +1,11 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <launch>
   <!-- left arm driver -->
-  <node name="left_arm_driver" pkg="kinova_driver" type="kinova_arm_driver" output="screen" cwd="node" args="j2n6s200">
+  <node name="left_arm_driver" pkg="kinova_driver" type="kinova_arm_driver" output="screen" cwd="node" args="j2s6s200">
     <rosparam file="$(find dual_jaco_bringup)/config/robot_parameters.yaml" command="load" />
     <param name="serial_number" value="left_arm" />
     <param name="robot_name" value="left_arm" />
-    <param name="robot_type" value="j2n6s200" />
+    <param name="robot_type" value="j2s6s200" />
     <remap from="/left_arm_driver/out/joint_state" to="joint_states" />
   </node>
 
